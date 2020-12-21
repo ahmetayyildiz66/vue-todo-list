@@ -21,7 +21,7 @@ export default {
     }
     &__task-count{
         margin-top: .7rem;
-        color: $color-turqoise;
+        color: $color-turquoise;
         font-size: 1.5rem;
     }
 }
