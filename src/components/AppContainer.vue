@@ -4,19 +4,28 @@
       <DailyInfo />
       <ButtonTasks />
     </section>
-    <router-view></router-view>
+    <section class="new-task">
+      <NewTask />
+    </section>
+    <router-view v-slot="slotProps">
+      <transition name="route" mode="out-in">
+        <component :is="slotProps.Component"></component>
+      </transition>
+    </router-view>
   </div>
 </template>
 
 <script>
 import DailyInfo from './DailyInfo'
 import ButtonTasks from './ButtonTasks'
+import NewTask from './NewTask'
 
 export default {
   name: 'AppContainer',
   components: {
     DailyInfo,
-    ButtonTasks
+    ButtonTasks,
+    NewTask
   }
 }
 </script>
