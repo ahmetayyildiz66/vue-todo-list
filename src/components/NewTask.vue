@@ -1,13 +1,33 @@
 <template>
   <form class="new-task">
-    <input type="text" class="new-task__input" placeholder="Enter a task..">
-    <button class="new-task__add" type="button">Add Task</button>
+    <input type="text" v-model="name" class="new-task__input" placeholder="Enter a task..">
+    <button class="new-task__add" type="button" @click="addNewTask">Add Task</button>
+    <p>{{ tasks }}</p>
   </form>
 </template>
 
 <script>
+import { ref } from 'vue'
+import useTask from '../hooks/task'
+
 export default {
-  name: 'NewTask'
+  name: 'NewTask',
+  setup () {
+    const name = ref('')
+    const { tasks, addNew, getTasks } = useTask()
+
+    function addNewTask () {
+      addNew(name.value)
+      name.value = ''
+    }
+
+    return {
+      name,
+      tasks,
+      addNewTask,
+      getTasks
+    }
+  }
 }
 </script>
 

@@ -1,10 +1,21 @@
 <template>
-  <p>Completed Tasks</p>
+  <div>
+    completed tasks - {{ getTasks }}
+  </div>
 </template>
 
 <script>
+import useTask from '../hooks/task'
+
 export default {
-  name: 'CompletedTasks'
+  name: 'CompletedTasks',
+  setup () {
+    const { getTasks } = useTask()
+
+    return {
+      getTasks
+    }
+  }
 }
 </script>
 
