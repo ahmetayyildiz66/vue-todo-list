@@ -1,5 +1,14 @@
 # todo-list-vue
 
+## TODO LIST
+* [x] SCSS
+* [x] Route
+* [] SVG
+* [x] Composition API
+* [] Deploy
+* [] Responsive
+* [x] Transition
+
 ## Project setup
 ```
 npm install
