@@ -16,9 +16,14 @@
 </template>
 
 <script>
+import { useRoute } from 'vue-router'
+import { watch } from 'vue'
+
 import DailyInfo from './DailyInfo'
 import ButtonTasks from './ButtonTasks'
 import NewTask from './NewTask'
+
+import useTask from '../hooks/task'
 
 export default {
   name: 'AppContainer',
@@ -26,11 +31,22 @@ export default {
     DailyInfo,
     ButtonTasks,
     NewTask
+  },
+  setup () {
+    const route = useRoute()
+    const { updateState } = useTask()
+
+    watch(() => route.path, (newValue) => {
+      if (newValue === '/') {
+        updateState('incomplete')
+      } else {
+        updateState('completed')
+      }
+    })
   }
 }
 </script>
 
-    ButtonTasks
 <style lang="scss" scoped>
 
 .container{

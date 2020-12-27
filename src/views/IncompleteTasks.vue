@@ -1,17 +1,26 @@
 <template>
-<div>
-  <p>Incomplete Tasks</p>
-  <IconCheckmark color="red"/>
-</div>
+  <div>
+    <ul v-for="task in getFilteredTasks" :key="task.id">
+      <SingleCompleteTask :task="task"/>
+    </ul>
+  </div>
 </template>
 
 <script>
-import IconCheckmark from '../icons/checkmark.svg'
+import useTask from '../hooks/task'
+import SingleCompleteTask from '../components/SingleCompleteTask'
 
 export default {
   name: 'IncompleteTasks',
   components: {
-    IconCheckmark
+    SingleCompleteTask
+  },
+  setup () {
+    const { getFilteredTasks } = useTask()
+
+    return {
+      getFilteredTasks
+    }
   }
 }
 </script>

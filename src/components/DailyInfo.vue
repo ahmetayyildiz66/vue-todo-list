@@ -1,13 +1,22 @@
 <template>
     <section class="daily-info">
         <time class="daily-info__date">Monday, December 21</time>
-        <span class="daily-info__task-count">2 Active Tasks</span>
+        <span class="daily-info__task-count">{{ tasksLength }} Active Tasks</span>
     </section>
 </template>
 
 <script>
+import useTask from '../hooks/task'
+
 export default {
-  name: 'DailyInfo'
+  name: 'DailyInfo',
+  setup () {
+    const { tasksLength } = useTask
+
+    return {
+      tasksLength
+    }
+  }
 }
 </script>
 

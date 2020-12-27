@@ -1,6 +1,6 @@
 <template>
   <div>
-    completed tasks - {{ getTasks }}
+    completed tasks - {{ getFilteredTasks }}
   </div>
 </template>
 
@@ -10,10 +10,10 @@ import useTask from '../hooks/task'
 export default {
   name: 'CompletedTasks',
   setup () {
-    const { getTasks } = useTask()
+    const { getFilteredTasks } = useTask()
 
     return {
-      getTasks
+      getFilteredTasks
     }
   }
 }
